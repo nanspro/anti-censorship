@@ -1,3 +1,5 @@
+import analyze from "./filter";
+
 // Some news blogs in tumblr
 blogs = [
   "campaignmoney.tumblr.com",

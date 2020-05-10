@@ -1,3 +1,5 @@
+import analyze from "./filter";
+
 const tags = [
     'trump',
     'china',
