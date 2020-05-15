@@ -1,18 +1,11 @@
-var googleapis = require('googleapis');
+const { Client } = require("@conversationai/perspectiveapi-js-client");
+API_KEY = 'AIzaSyAdU3V2-zmidBMLO0s3S0b2TeCy7n8AkjM'
 
-API_KEY = 'copy-your-api-key-here'
-DISCOVERY_URL = 'https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1'
+const client = new Client(API_KEY);
 
-export async function analyze(text, attributes) {
-    googleapis.discoverAPI(DISCOVERY_URL, (err, client) => {
-    if (err) throw err;
-    var analyzeRequest = {
-        comment: text,
-        requestedAttributes: attributes
-    };
-    client.comments.analyze({key: API_KEY, resource: analyzeRequest}, (err, response) => {
-        if (err) throw err;
-        console.log(JSON.stringify(response, null, 2));
-    });
-    });
-}
+(async () => {
+  let results = await client.getScores("Fuck you bitch!!", {attributes: ["TOXICITY"]});
+  console.log("result", results);
+  })().catch(e => {
+  console.log(e.error);
+});
