@@ -7,6 +7,7 @@
     "@conversationai/perspectiveapi-js-client": "^1.0.1",
     "@koa/cors": "^3.1.0",
     "bluzelle": "^1.0.12",
+    "cheerio": "^1.0.0-rc.3",
     "googleapis": "^50.0.0",
     "koa": "^2.11.0",
     "koa-locale": "^1.3.0",
