@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@conversationai/perspectiveapi-js-client": "^1.0.1",
+    "bluzelle": "^1.0.12",
     "googleapis": "^50.0.0",
     "tumblr.js": "^2.0.2",
     "twit": "^2.2.11"
