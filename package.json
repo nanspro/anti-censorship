@@ -10,10 +10,12 @@
     "bluzelle": "^1.0.12",
     "cheerio": "^1.0.0-rc.3",
     "googleapis": "^50.0.0",
+    "grommet": "^2.13.0",
     "netlify-lambda": "^1.6.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "styled-components": "^5.1.0",
     "tumblr.js": "^2.0.2",
     "twit": "^2.2.11"
   },

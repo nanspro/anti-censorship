@@ -1,2 +1,4 @@
 [build]
-  Functions = "build"
+  publish     = "build"
+  command     = "npm run build"
+  functions   = "lambda-build"
