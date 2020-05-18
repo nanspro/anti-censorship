@@ -10,7 +10,7 @@
 
 # production
 /build
-/build_lambdas
+/lambda-build
 
 # misc
 .DS_Store
