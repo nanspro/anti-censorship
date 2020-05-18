@@ -1,7 +1,7 @@
 import React from "react";
 import { Grommet } from "grommet";
 
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./Dashboard";
 
 function App() {
   return (
