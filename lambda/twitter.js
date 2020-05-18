@@ -9,14 +9,6 @@ var T = new Twit({
   access_token_secret: "k6o04ihpvgY3NSBx9cVK1jizMmYzL675RfQPqcO2TcBlD",
 });
 
-// async function filterText(text) {
-//   let results = await client.getScores(text, {
-//     attributes: ["SEVERE_TOXICITY", "THREAT", "SEXUALLY_EXPLICIT"],
-//   });
-//   console.log(results);
-//   return results;
-// }
-
 async function getTags(ID, limit) {
   let trends,
     tags = [];
@@ -36,7 +28,6 @@ async function trackTags(tags, limit) {
 
   // connecting to stream
   var stream = T.stream("statuses/filter", { track: tags, language: "en" });
-  // let res = await T.get('search/tweets', { q: 'china since:2020-01-1', count: limit });
 
   stream.on("tweet", function (tweet) {
     console.log(tweet.text);
@@ -53,7 +44,7 @@ async function trackTags(tags, limit) {
 
 }
 
-(async function main() {
+exports.handler = async (event, context, callback) => {
   await T.get("account/verify_credentials", {
     include_entities: false,
     skip_status: true,
@@ -64,5 +55,9 @@ async function trackTags(tags, limit) {
   let tags = await getTags(44418, 10);
   console.log(tags);
 
-  trackTags(tags, 10);
-})();
+  // trackTags(tags, 10);
+  return {
+    statusCode: 200,
+    body: tags,
+  };
+};

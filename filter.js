@@ -37,6 +37,25 @@ async function getAverageScore(textToFilter) {
   return average;
 }
 
+async function getAverageScoreTweets(tweets) {
+  console.log("All tweets", tweets);
+  let averages = [];
+
+  for (let i = 0; i < tweets.length; i++) {
+    const scores = await getScores(tweets[i]);
+    const scoresList = Object.values(scores);
+    let average = 0.0;
+
+    scoresList.forEach(function (score) {
+      average += score;
+    });
+    average /= scoresList.length;
+    averages.push(average);
+  }
+  console.log(averages);
+  return averages;
+}
+
 async function getScores(textToFilter) {
   let scores = {};
   try {
@@ -47,4 +66,4 @@ async function getScores(textToFilter) {
   return scores;
 }
 
-module.exports = { threshold, getAverageScore, getScores };
+module.exports = { threshold, getAverageScore, getScores, getAverageScoreTweets };

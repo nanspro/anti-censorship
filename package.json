@@ -10,6 +10,7 @@
     "bluzelle": "^1.0.12",
     "cheerio": "^1.0.0-rc.3",
     "googleapis": "^50.0.0",
+    "netlify-lambda": "^1.6.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
@@ -20,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:lambda": "netlify-lambda serve lambda",
+    "build:lambda": "netlify-lambda build lambda"
   },
   "eslintConfig": {
     "extends": "react-app"
