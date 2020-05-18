@@ -1,5 +1,5 @@
 const cheerio = require("cheerio");
-const filter = require("../filter");
+const filter = require("../scripts/filter");
 
 // Some news blogs in tumblr
 blogs = [

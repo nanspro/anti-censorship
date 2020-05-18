@@ -1,4 +1,5 @@
 const { Client } = require("@conversationai/perspectiveapi-js-client");
+const { save, fetch, keyExist, fetchAll } = require("./bluzelle");
 API_KEY = "AIzaSyAdU3V2-zmidBMLO0s3S0b2TeCy7n8AkjM";
 
 const client = new Client(API_KEY);
@@ -13,7 +14,7 @@ const attributes = [
   "SEXUALLY_EXPLICIT",
   "FLIRTATION",
 ];
-const threshold = 0.2;
+const threshold = 0.5;
 
 // example sentences
 const examples = [
@@ -37,12 +38,13 @@ async function getAverageScore(textToFilter) {
   return average;
 }
 
-async function getAverageScoreTweets(tweets) {
+async function analyzeAndSave(tweets) {
   console.log("All tweets", tweets);
   let averages = [];
 
   for (let i = 0; i < tweets.length; i++) {
-    const scores = await getScores(tweets[i]);
+    // using perspective apis
+    const scores = await getScores(tweets[i].content);
     const scoresList = Object.values(scores);
     let average = 0.0;
 
@@ -50,9 +52,15 @@ async function getAverageScoreTweets(tweets) {
       average += score;
     });
     average /= scoresList.length;
-    averages.push(average);
+    
+    if (average < threshold) {
+      averages.push(average);
+      let savedValue = await save(tweets[i].id, JSON.stringify(tweets[i]));
+      console.log("Saved Value", savedValue);
+    }
   }
-  console.log(averages);
+
+  console.log("Average Scores", averages);
   return averages;
 }
 
@@ -66,4 +74,4 @@ async function getScores(textToFilter) {
   return scores;
 }
 
-module.exports = { threshold, getAverageScore, getScores, getAverageScoreTweets };
+module.exports = { threshold, getAverageScore, getScores, analyzeAndSave };

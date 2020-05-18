@@ -15,14 +15,34 @@ const lease_info = {
 
 const config = {
     mnemonic: "around buzz diagram captain obtain detail salon mango muffin brother morning jeans display attend knife carry green dwarf vendor hungry fan route pumpkin car",
-    endpoint: "http://testnet.public.bluzelle.com:26657",
+    endpoint: "http://testnet.public.bluzelle.com:1317",
     chain_id: 'bluzelle',
     uuid: "twitter"
 };
 
-(async () => {
+async function save(key, value) {
     const bz = await bluzelle(config);
 
-    // await bz.create("name", "rahul", gas_info)
-    console.log(await bz.read("name"))
-})();
+    await bz.create(key, value, gas_info, lease_info);
+    return await bz.read(key);
+};
+
+async function fetch(key) {
+    const bz = await bluzelle(config);
+
+    return await bz.read(key);
+};
+
+async function fetchAll() {
+    const bz = await bluzelle(config);
+
+    return await bz.keyValues();
+};
+
+async function keyExist(key) {
+    const bz = await bluzelle(config);
+
+    return await bz.has(key);
+};
+
+module.exports = { fetch, save, fetchAll, keyExist };

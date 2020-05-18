@@ -1,6 +1,6 @@
 const Twit = require("twit");
-// const { bluzelle } = require("bluzelle");
-const filter = require("../filter");
+const { bz } = require("./bluzelle");
+const filter = require("./filter");
 
 var T = new Twit({
   consumer_key: "1vjHlLXELHVzkNAWZ0msm6cAq",
@@ -36,18 +36,32 @@ async function trackTags(tags, limit) {
 
   // connecting to stream
   var stream = T.stream("statuses/filter", { track: tags, language: "en" });
-  // let res = await T.get('search/tweets', { q: 'china since:2020-01-1', count: limit });
 
   stream.on("tweet", function (tweet) {
-    console.log(tweet.text);
     count++;
+    let source = "https://twitter.com/" + tweet.user.screen_name +  "/status/" + tweet.id_str;
+    
+    let tweetObj = {
+      source: "twitter",
+      id: tweet.id_str,
+      url: source,
+      tags: [],
+      timestamp: tweet.timestamp_ms,
+      metadata: {
+        type: "text",
+        possibly_sensitive: tweet.possibly_sensitive || "false",
+        created_at: tweet.created_at,
+        username: tweet.user.screen_name,
+      },
+      content: tweet.text
+    };
     if (count < limit) {
-      tweets.push(tweet.text);
+      tweets.push(tweetObj);
     } else {
       console.log(tweets);
       stream.stop();
 
-      filter.getAverageScoreTweets(tweets);
+      filter.analyzeAndSave(tweets);
     }
   });
 
@@ -61,7 +75,7 @@ async function trackTags(tags, limit) {
   });
   console.log("Authorization successful");
 
-  let tags = await getTags(44418, 10);
+  let tags = await getTags(76456, 10);
   console.log(tags);
 
   trackTags(tags, 10);
