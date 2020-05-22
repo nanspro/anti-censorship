@@ -2,11 +2,14 @@ import React from "react";
 import { Grommet } from "grommet";
 
 import Dashboard from "./Dashboard";
+import DataWrapper from "./components/DataWrapper";
 
 function App() {
   return (
     <Grommet>
-      <Dashboard />
+      <DataWrapper>
+        {(fetchData) => <Dashboard fetchData={fetchData} />}
+      </DataWrapper>
     </Grommet>
   );
 }
