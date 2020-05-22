@@ -12,6 +12,8 @@
 /build
 /lambda-build
 
+netlify.toml
+
 # misc
 .DS_Store
 .env.local
