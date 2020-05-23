@@ -1,4 +1,4 @@
-const dotenv = require("dotenv");
+const dotenv = require('dotenv');
 dotenv.config();
 
 module.exports = {
@@ -10,12 +10,13 @@ module.exports = {
 
   // Perspective API
   PERSPECTIVE_API_KEY: process.env.PERSPECTIVE_API_KEY,
-  PERSPECTIVE_API_THRESHOLD: 0.2,
+  PERSPECTIVE_API_THRESHOLD: process.env.PERSPECTIVE_API_THRESHOLD,
 
   // Bluzelle
-  BLUZELLE_MNEMONIC: process.env.BLUZELLE_MNEMONIC,
-  BLUZELLE_ENDPOINT: process.env.BLUZELLE_ENDPOINT,
-  BLUZELLE_CHAIN_ID: process.env.BLUZELLE_CHAIN_ID,
+  BLUZELLE_MNEMONIC:
+    'around buzz diagram captain obtain detail salon mango muffin brother morning jeans display attend knife carry green dwarf vendor hungry fan route pumpkin car',
+  BLUZELLE_ENDPOINT: 'http://testnet.public.bluzelle.com:1317',
+  BLUZELLE_CHAIN_ID: 'bluzelle',
 
   //Tumblr
   TUMBLR_CONSUMER_KEY: process.env.TUMBLR_CONSUMER_KEY,
