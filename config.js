@@ -1,11 +1,25 @@
-// config.js
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 
 module.exports = {
+  // Twitter
   TWITTER_CONSUMER_KEY: process.env.TWITTER_CONSUMER_KEY,
   TWITTER_CONSUMER_SECRET: process.env.TWITTER_CONSUMER_SECRET,
   TWITTER_ACCESS_TOKEN: process.env.TWITTER_ACCESS_TOKEN,
   TWITTER_ACCESS_TOKEN_SECRET: process.env.TWITTER_ACCESS_TOKEN_SECRET,
-  PERSPECTIVE_API_KEY: process.env.PERSPECTIVE_API_KEY
+
+  // Perspective API
+  PERSPECTIVE_API_KEY: process.env.PERSPECTIVE_API_KEY,
+  PERSPECTIVE_API_THRESHOLD: 0.2,
+
+  // Bluzelle
+  BLUZELLE_MNEMONIC: process.env.BLUZELLE_MNEMONIC,
+  BLUZELLE_ENDPOINT: process.env.BLUZELLE_ENDPOINT,
+  BLUZELLE_CHAIN_ID: process.env.BLUZELLE_CHAIN_ID,
+
+  //Tumblr
+  TUMBLR_CONSUMER_KEY: process.env.TUMBLR_CONSUMER_KEY,
+  TUMBLR_CONSUMER_SECRET: process.env.TUMBLR_CONSUMER_SECRET,
+  TUMBLR_TOKEN: process.env.TUMBLR_TOKEN,
+  TUMBLR_TOKEN_SECRET: process.env.TUMBLR_TOKEN_SECRET,
 };

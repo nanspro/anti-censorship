@@ -1,48 +1,57 @@
 const { bluzelle } = require("bluzelle");
+const {
+  BLUZELLE_MNEMONIC,
+  BLUZELLE_CHAIN_ID,
+  BLUZELLE_ENDPOINT,
+} = require("../config");
 
 const gas_info = {
-    gas_price: 100, // maximum price to pay for gas (integer, in ubnt)
-    max_gas: 20000000, // maximum amount of gas to consume for this call (integer)
-    max_fee: 200000000 // maximum amount to charge for this call (integer, in ubnt)
+  gas_price: 100, // maximum price to pay for gas (integer, in ubnt)
+  max_gas: 20000000, // maximum amount of gas to consume for this call (integer)
+  max_fee: 200000000, // maximum amount to charge for this call (integer, in ubnt)
 };
 
 const lease_info = {
-    'days':    7, // number of days (integer)
-    'hours':   0, // number of hours (integer)
-    'minutes': 0,  // number of minutes (integer)
-    'seconds': 0  // number of seconds (integer)
+  days: 7, // number of days (integer)
+  hours: 0, // number of hours (integer)
+  minutes: 0, // number of minutes (integer)
+  seconds: 0, // number of seconds (integer)
 };
 
-const config = {
-    mnemonic: "around buzz diagram captain obtain detail salon mango muffin brother morning jeans display attend knife carry green dwarf vendor hungry fan route pumpkin car",
-    endpoint: "http://testnet.public.bluzelle.com:1317",
-    chain_id: 'bluzelle',
-    uuid: "twitter"
-};
+async function getBluzelleClient(uuid) {
+  const config = {
+    uuid,
+    mnemonic: BLUZELLE_MNEMONIC,
+    endpoint: BLUZELLE_ENDPOINT,
+    chain_id: BLUZELLE_CHAIN_ID,
+  };
 
-async function save(key, value) {
-    const bz = await bluzelle(config);
+  return await bluzelle(config);
+}
 
-    await bz.create(key, value, gas_info, lease_info);
-    return await bz.read(key);
-};
+async function save(uuid, key, value) {
+  const bz = await getBluzelleClient(uuid);
 
-async function fetch(key) {
-    const bz = await bluzelle(config);
+  await bz.create(key, value, gas_info, lease_info);
+  return await bz.read(key);
+}
 
-    return await bz.read(key);
-};
+async function fetch(uuid, key) {
+  const bz = await getBluzelleClient(uuid);
 
-async function fetchAll() {
-    const bz = await bluzelle(config);
+  return await bz.read(key);
+}
 
-    return await bz.keyValues();
-};
+async function fetchAll(uuid) {
+  const bz = await getBluzelleClient(uuid);
 
-async function keyExist(key) {
-    const bz = await bluzelle(config);
+  return await bz.keyValues();
+}
 
-    return await bz.has(key);
-};
+async function keyExists(uuid, key) {
+  const bz = await getBluzelleClient(uuid);
 
-module.exports = { fetch, save, fetchAll, keyExist };
+  return await bz.has(key);
+}
+
+module.exports = { fetch, save, fetchAll, keyExists };
