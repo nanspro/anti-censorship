@@ -11,10 +11,7 @@ const StyledTextInput = styled(TextInput)`
   padding: 5px 10px 5px 45px;
 `;
 
-const Searchbar = ({ activeSource, onSearch, onSourceChange }) => {
-  // Boolean onSearch(query)
-  // Boolean onSourceChange(source) -> source in ["all", "twitter", "tumlr"]
-
+const Searchbar = ({ activeSource, setActiveSource }) => {
   return (
     <Container>
       <ResponsiveContext.Consumer>
@@ -31,26 +28,39 @@ const Searchbar = ({ activeSource, onSearch, onSourceChange }) => {
               justify="around"
             >
               <Button
-                disabled
                 icon={<Icons.Aggregate />}
                 label="All Posts"
-                onClick={() => {}}
+                onClick={() => {
+                  setActiveSource("all");
+                }}
                 primary={activeSource === "all"}
               />
               <Button
-                icon={<Icons.Twitter />}
+                icon={
+                  <Icons.Twitter
+                    color={activeSource !== "twitter" ? "#08a0e9" : null}
+                  />
+                }
                 label="Twitter"
-                onClick={() => {}}
+                onClick={() => {
+                  setActiveSource("twitter");
+                }}
                 primary={activeSource === "twitter"}
                 color="#08a0e9"
               />
-              {/* <Button
-                disabled
-                icon={<Icons.Tumblr />}
+              <Button
+                icon={
+                  <Icons.Tumblr
+                    color={activeSource !== "tumblr" ? "#34526F" : null}
+                  />
+                }
                 label="Tumblr"
-                onClick={() => {}}
+                onClick={() => {
+                  setActiveSource("tumblr");
+                }}
                 primary={activeSource === "tumblr"}
-              /> */}
+                color="#34526F"
+              />
             </Box>
             <Box>
               <StyledTextInput

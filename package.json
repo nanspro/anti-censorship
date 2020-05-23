@@ -16,6 +16,7 @@
     "http-proxy-middleware": "^1.0.4",
     "husky": "^4.2.5",
     "netlify-lambda": "^1.6.3",
+    "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
@@ -33,8 +34,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "netlify-lambda build lambda"
+      "pre-commit": "lint-staged && netlify-lambda build lambda"
     }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --single-quote --write"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
