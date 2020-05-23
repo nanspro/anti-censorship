@@ -13,6 +13,7 @@
     "grommet": "^2.13.0",
     "grommet-icons": "^4.4.0",
     "http-proxy-middleware": "^1.0.4",
+    "husky": "^4.2.5",
     "netlify-lambda": "^1.6.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -28,6 +29,11 @@
     "eject": "react-scripts eject",
     "start:lambda": "netlify-lambda serve lambda",
     "build:lambda": "netlify-lambda build lambda"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "netlify-lambda build lambda"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
