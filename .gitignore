@@ -10,7 +10,6 @@
 
 # production
 /build
-/lambda-build
 
 netlify.toml
 
@@ -24,6 +23,3 @@ netlify.toml
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# netlify-lambda build
-lambda-build
