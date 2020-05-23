@@ -1,11 +1,12 @@
 const Twit = require("twit");
 const filter = require("../scripts/filter");
+const { TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET, TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET } = require("../config");
 
 var T = new Twit({
-  consumer_key: "1vjHlLXELHVzkNAWZ0msm6cAq",
-  consumer_secret: "MPawQEtJR8RN1MNAirgeKMVv5EqQXfLmWx51jkKCpno0LPCIUC",
-  access_token: "3278644896-a0D15sIOnfIghdgmcXxcKoqxwyb8jxFqZAyzTbY",
-  access_token_secret: "k6o04ihpvgY3NSBx9cVK1jizMmYzL675RfQPqcO2TcBlD",
+  consumer_key: TWITTER_CONSUMER_KEY,
+  consumer_secret: TWITTER_CONSUMER_SECRET,
+  access_token: TWITTER_ACCESS_TOKEN,
+  access_token_secret: TWITTER_ACCESS_TOKEN_SECRET,
 });
 
 async function getTags(ID, limit) {

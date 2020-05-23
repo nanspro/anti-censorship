@@ -1,8 +1,8 @@
 const { Client } = require("@conversationai/perspectiveapi-js-client");
 const { save, fetch, keyExist, fetchAll } = require("./bluzelle");
-API_KEY = "AIzaSyAdU3V2-zmidBMLO0s3S0b2TeCy7n8AkjM";
+const { PERSPECTIVE_API_KEY } = require("../config");
 
-const client = new Client(API_KEY);
+const client = new Client(PERSPECTIVE_API_KEY);
 
 const attributes = [
   "TOXICITY",
