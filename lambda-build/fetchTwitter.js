@@ -12424,8 +12424,8 @@
           BLUZELLE_CHAIN_ID: o,
           BLUZELLE_ENDPOINT: a,
         } = r(78),
-        s = { gas_price: 100, max_gas: 2e7, max_fee: 2e8 },
-        u = { days: 7, hours: 0, minutes: 0, seconds: 0 };
+        s = { gas_price: 10, max_gas: 2e5, max_fee: 2e6 },
+        u = { days: 60, hours: 0, minutes: 0, seconds: 0 };
       async function c(e) {
         const t = { uuid: e, mnemonic: i, endpoint: a, chain_id: o };
         return await n(t);

@@ -1,18 +1,18 @@
-const { bluzelle } = require("bluzelle");
+const { bluzelle } = require('bluzelle');
 const {
   BLUZELLE_MNEMONIC,
   BLUZELLE_CHAIN_ID,
   BLUZELLE_ENDPOINT,
-} = require("../config");
+} = require('../config');
 
 const gas_info = {
-  gas_price: 100, // maximum price to pay for gas (integer, in ubnt)
-  max_gas: 20000000, // maximum amount of gas to consume for this call (integer)
-  max_fee: 200000000, // maximum amount to charge for this call (integer, in ubnt)
+  gas_price: 10, // maximum price to pay for gas (integer, in ubnt)
+  max_gas: 200000, // maximum amount of gas to consume for this call (integer)
+  max_fee: 2000000, // maximum amount to charge for this call (integer, in ubnt)
 };
 
 const lease_info = {
-  days: 7, // number of days (integer)
+  days: 60, // number of days (integer)
   hours: 0, // number of hours (integer)
   minutes: 0, // number of minutes (integer)
   seconds: 0, // number of seconds (integer)

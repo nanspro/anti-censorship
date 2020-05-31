@@ -27194,6 +27194,35 @@
           );
         },
         getScores: s,
+        analyzeAndSaveTwitter: async function (e) {
+          console.log('All tweets', e);
+          let t = [];
+          for (let a = 0; a < e.length; a++) {
+            const i = await s(e[a].content),
+              r = Object.values(i);
+            let o = 0;
+            if (
+              (r.forEach(function (e) {
+                o += e;
+              }),
+              (o /= r.length),
+              o < process.env.PERSPECTIVE_API_THRESHOLD)
+            ) {
+              t.push(o);
+              try {
+                let t = await save('twitter', e[a].id, JSON.stringify(e[a]));
+                console.log('Saved Value', t);
+              } catch (e) {
+                console.log('Saving to Bluzelle failed with: ' + e);
+              }
+            }
+          }
+          return (
+            console.log('Average Scores', t),
+            console.log(e.length + ' tweets have been saved to Bluzelle'),
+            t
+          );
+        },
       };
     },
     function (e, t, a) {
@@ -29098,7 +29127,7 @@
           a = (await p.get('trends/place', { id: e })).data[0].trends;
           for (var r = 0; r < t; r++) i.push(a[r].name);
           return i;
-        })(76456, 10);
+        })(1, 10);
         return (
           console.log(i),
           await (async function (e, t) {
@@ -29128,7 +29157,7 @@
                 };
               a < t
                 ? i.push(s)
-                : (console.log(i), o.stop(), r.analyzeAndSave(i));
+                : (console.log(i), o.stop(), r.analyzeAndSaveTwitter(i));
             });
           })(i, 10),
           { statusCode: 200, body: i }

@@ -32,3 +32,7 @@ Tumblr another great social platform is no different than twitter (although less
 We are saving content on bluzelle which might get censored on tumblr like NSFW, Political posts etc.
 
 ![Tumblr](./images/tumblr.png)
+
+## Local Env Setup
+
+Please refer to [CONTRIBUTING.md](https://github.com/nanspro/anti-censorship) to see contribution instructions and local env setup.

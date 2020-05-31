@@ -23314,8 +23314,8 @@
           BLUZELLE_CHAIN_ID: a,
           BLUZELLE_ENDPOINT: o,
         } = r(78),
-        s = { gas_price: 100, max_gas: 2e7, max_fee: 2e8 },
-        u = { days: 7, hours: 0, minutes: 0, seconds: 0 };
+        s = { gas_price: 10, max_gas: 2e5, max_fee: 2e6 },
+        u = { days: 60, hours: 0, minutes: 0, seconds: 0 };
       async function c(e) {
         const t = { uuid: e, mnemonic: i, endpoint: o, chain_id: a };
         return await n(t);
@@ -53636,6 +53636,35 @@
           );
         },
         getScores: s,
+        analyzeAndSaveTwitter: async function (e) {
+          console.log('All tweets', e);
+          let t = [];
+          for (let r = 0; r < e.length; r++) {
+            const n = await s(e[r].content),
+              i = Object.values(n);
+            let a = 0;
+            if (
+              (i.forEach(function (e) {
+                a += e;
+              }),
+              (a /= i.length),
+              a < process.env.PERSPECTIVE_API_THRESHOLD)
+            ) {
+              t.push(a);
+              try {
+                let t = await save('twitter', e[r].id, JSON.stringify(e[r]));
+                console.log('Saved Value', t);
+              } catch (e) {
+                console.log('Saving to Bluzelle failed with: ' + e);
+              }
+            }
+          }
+          return (
+            console.log('Average Scores', t),
+            console.log(e.length + ' tweets have been saved to Bluzelle'),
+            t
+          );
+        },
       };
     },
     function (e, t, r) {
