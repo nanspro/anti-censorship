@@ -36,3 +36,6 @@ We are saving content on bluzelle which might get censored on tumblr like NSFW, 
 ## Local Env Setup
 
 Please refer to [CONTRIBUTING.md](https://github.com/nanspro/anti-censorship) to see contribution instructions and local env setup.
+
+## LICENSE
+[MIT](https://github.com/nanspro/anti-censorship/blob/master/LICENSE)
