@@ -1,5 +1,5 @@
 const { Client } = require('@conversationai/perspectiveapi-js-client');
-// const { save } = require("./bluzelle");
+const { save } = require('./bluzelle');
 const { PERSPECTIVE_API_KEY } = require('../config');
 
 const PERSPECTIVE_API_ATTRIBUTES = [
@@ -43,7 +43,7 @@ async function analyzeAndSaveTwitter(tweets) {
     });
     average /= scoresList.length;
 
-    if (average < process.env.PERSPECTIVE_API_THRESHOLD) {
+    if (average >= process.env.PERSPECTIVE_API_THRESHOLD) {
       averages.push(average);
       try {
         let savedValue = await save(
