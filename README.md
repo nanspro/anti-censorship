@@ -1,6 +1,6 @@
 # anti-censorship
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d17f4227-c6d9-4349-8abf-ce5aa614acfc/deploy-status)](https://app.netlify.com/sites/kind-mclean-c70213/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d17f4227-c6d9-4349-8abf-ce5aa614acfc/deploy-status)](https://app.netlify.com/sites/bluzelle-anti-censorship/deploys)
 
 An anti-censorship application where we store data which is likely to be censored forever using bluzelle database
 
