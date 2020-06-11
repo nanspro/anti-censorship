@@ -31,6 +31,9 @@
 
   Open .env now and set all those vars with proper values
 
+- Setting up netlify
+  `mv netlify.toml.template netlify.toml`
+
 - Building and Running lamda server
 
   ```bash

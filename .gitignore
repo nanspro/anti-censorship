@@ -12,7 +12,7 @@
 # production
 /build
 
-netlify.toml
+netify.toml
 
 # misc
 .DS_Store
