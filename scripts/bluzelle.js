@@ -19,14 +19,23 @@ const lease_info = {
 };
 
 async function getBluzelleClient(uuid) {
-  const config = {
-    uuid,
-    mnemonic: BLUZELLE_MNEMONIC,
-    endpoint: BLUZELLE_ENDPOINT,
-    chain_id: BLUZELLE_CHAIN_ID,
-  };
-
-  return await bluzelle(config);
+  var cache = {};
+  var key = uuid;
+  if (cache[key]){
+    console.log(cache)
+    return cache[key];
+  }
+  else{
+    const config = {
+      uuid,
+      mnemonic: BLUZELLE_MNEMONIC,
+      endpoint: BLUZELLE_ENDPOINT,
+      chain_id: BLUZELLE_CHAIN_ID,
+    };
+    val = await bluzelle(config);
+    cache[key] = val;
+    return val; 
+  }
 }
 
 async function save(uuid, key, value) {
