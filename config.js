@@ -1,4 +1,4 @@
-const dotenv = require("dotenv");
+const dotenv = require('dotenv');
 dotenv.config();
 
 module.exports = {
@@ -14,9 +14,9 @@ module.exports = {
 
   // Bluzelle
   BLUZELLE_MNEMONIC:
-    "around buzz diagram captain obtain detail salon mango muffin brother morning jeans display attend knife carry green dwarf vendor hungry fan route pumpkin car",
-  BLUZELLE_ENDPOINT: "http://client.sentry.testnet.public.bluzelle.com:1317/",
-  BLUZELLE_CHAIN_ID: "bluzelleTestPublic-1",
+    'around buzz diagram captain obtain detail salon mango muffin brother morning jeans display attend knife carry green dwarf vendor hungry fan route pumpkin car',
+  BLUZELLE_ENDPOINT: 'http://client.sentry.testnet.public.bluzelle.com:1317',
+  BLUZELLE_CHAIN_ID: 'bluzelleTestPublic-1',
 
   //Tumblr
   TUMBLR_CONSUMER_KEY: process.env.TUMBLR_CONSUMER_KEY,
