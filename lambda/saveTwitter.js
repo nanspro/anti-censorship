@@ -75,10 +75,16 @@ exports.handler = async (event, context, callback) => {
   });
   console.log('Authorization successful');
 
-  let tags = await getTags(1, 10);
+  // Let's see what's trending in USA
+  let tags = await getTags(23424977, 10);
   console.log(tags);
 
-  await trackTags(tags, 10);
+  try {
+    await trackTags(tags, 10);
+  } catch (e) {
+    console.log('Error tracking', e);
+  }
+
   return {
     statusCode: 200,
     body: tags,

@@ -21,11 +21,10 @@ const lease_info = {
 async function getBluzelleClient(uuid) {
   var cache = {};
   var key = uuid;
-  if (cache[key]){
-    console.log(cache)
+  if (cache[key]) {
+    console.log(cache);
     return cache[key];
-  }
-  else{
+  } else {
     const config = {
       uuid,
       mnemonic: BLUZELLE_MNEMONIC,
@@ -34,14 +33,23 @@ async function getBluzelleClient(uuid) {
     };
     val = await bluzelle(config);
     cache[key] = val;
-    return val; 
+    // const created_db = await val._createDB(uuid);
+    // console.log('Created uuid base db', created_db);
+    return val;
   }
 }
 
 async function save(uuid, key, value) {
   const bz = await getBluzelleClient(uuid);
+  console.log('Fetched bluzelle client', bz);
 
-  await bz.create(key, value, gas_info, lease_info);
+  let created_db = '';
+  try {
+    created_db = await bz.create(key, value, gas_info, lease_info);
+  } catch (e) {
+    console.log('Error storing in db', e);
+  }
+  console.log('Storing tweet in db', created_db);
   return await bz.read(key);
 }
 

@@ -14,9 +14,9 @@ module.exports = {
 
   // Bluzelle
   BLUZELLE_MNEMONIC:
-    'around buzz diagram captain obtain detail salon mango muffin brother morning jeans display attend knife carry green dwarf vendor hungry fan route pumpkin car',
-  BLUZELLE_ENDPOINT: 'http://client.sentry.testnet.public.bluzelle.com:1317',
-  BLUZELLE_CHAIN_ID: 'bluzelleTestPublic-1',
+    'ceiling cat potato program palm behave say traffic erupt fault frozen siege good lunch split kidney jeans express help input square violin vacuum arm',
+  BLUZELLE_ENDPOINT: 'https://client.sentry.testnet.public.bluzelle.com:1317/',
+  BLUZELLE_CHAIN_ID: 'bluzelle-testnet-public-9',
 
   //Tumblr
   TUMBLR_CONSUMER_KEY: process.env.TUMBLR_CONSUMER_KEY,

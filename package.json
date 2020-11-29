@@ -7,7 +7,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "bluzelle": "^1.0.12",
+    "bluzelle": "^2.1.5",
     "cheerio": "^1.0.0-rc.3",
     "dotenv": "^8.2.0",
     "googleapis": "^50.0.0",
